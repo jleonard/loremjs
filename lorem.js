@@ -117,6 +117,9 @@ var Lorem;
         if (element == null)
             return lorem;
     };
+    Lorem.prototype.createNumber = function(element) {
+
+    }
 
     //Register as jQuery
     if (typeof jQuery != 'undefined') {
@@ -131,9 +134,26 @@ var Lorem;
                 })
             };
 
+            $.fn.loremNumber = function(){
+                $(this).each(function(){
+                    var num = "";
+                    var txt = $(this).text().split("");
+                    for (var i = 0; i < txt.length; i++) {
+                        if(txt[i] == "x"){
+                            num += Math.floor(Math.random() * (9 - 0 + 1)) + 0;
+                        }else{
+                            num += txt[i];
+                        }
+                    }
+                    $(this).text(num)
+                })
+
+            }
+
             //If developer run this javascript, then we can run the lorem.js
             $(document).ready(function() {
                 $('[data-lorem]').lorem();
+                $('[data-lorem-number]').loremNumber();
             });
         })(jQuery);
     }
