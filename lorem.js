@@ -137,10 +137,11 @@ var Lorem;
             $.fn.loremNumber = function(){
                 $(this).each(function(){
                     var num = "";
-                    var txt = $(this).text().split("");
+                    var txt = $(this).attr("data-lorem-number").split("");
                     for (var i = 0; i < txt.length; i++) {
                         if(txt[i] == "x"){
-                            num += Math.floor(Math.random() * (9 - 0 + 1)) + 0;
+                            var digit = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+                            num += digit;
                         }else{
                             num += txt[i];
                         }
