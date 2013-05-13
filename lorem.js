@@ -117,8 +117,18 @@ var Lorem;
         if (element == null)
             return lorem;
     };
-    Lorem.prototype.createNumber = function(element) {
-
+    Lorem.prototype.createNumber = function(string) {
+        var num = "";
+        var txt = string.split("");
+        for (var i = 0; i < txt.length; i++) {
+            if(txt[i] == "x"){
+                var digit = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+                num += digit;
+            }else{
+                num += txt[i];
+            }
+        }
+        return num;
     }
 
     //Register as jQuery
